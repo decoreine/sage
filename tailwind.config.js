@@ -4,6 +4,10 @@ const config = {
   theme: {
     extend: {
       colors: {}, // Extend Tailwind's default colors
+      screens: {
+        'woo-md': '769px',
+        // => @media (min-width: 769px) { to correct woocommerce bug }
+      },
     },
   },
   plugins: [],

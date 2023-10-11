@@ -1,3 +1,300 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+
+/* -----------------------------------------
+  Table of Contents
+--------------------------------------------
+
+.. 01. General
+.. 02. Banner
+.... 02.1. Main Navigation
+.. 03. Main Content
+.. 04. Footer
+.. 05. Wordpress
+.. 06. Woocommerce
+.... 06.1. Product Content
+*/
+
+
+/* -----------------------------------------
+  01. General
+----------------------------------------- */
+
+input, textarea, select {
+  height: 35px;
+  padding: 6px 12px;
+  @apply bg-white;
+}
+
+/* -----------------------------------------
+  02. Banner
+----------------------------------------- */
+
+.banner {
+  @apply mb-4;
+}
+
+/* Main Navigation
+=================================== */
+.primary_navigation {
+  @apply  bg-white shadow;
+}
+
+.head-nav {
+  @apply  max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 flex justify-between h-16;
+}
+
+.brand {
+  @apply flex pr-2  font-bold text-xl  lg:flex  items-center justify-center;
+}
+
+.nav {
+  @apply  flex px-2 lg:px-0;
+}
+
+#menu-primary li.current-menu-item {
+  @apply font-medium text-indigo-600 ;
+}
+
+#menu-primary li.menu-item {
+  @apply font-medium  hover:text-indigo-500;
+}
+
+#menu-primary {
+  @apply hidden lg:ml-6 lg:flex lg:space-x-8 items-center justify-center;
+}
+
+#menu-profile .menu-item{
+  @apply block px-4 py-1 text-sm text-gray-700 hover:bg-gray-100;
+}
+
+#menu-profile li a{
+  @apply block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100;
+}
+#menu-profile li.menu-item {
+  @apply font-medium  hover:text-indigo-500;
+}
+#menu-profile li.current-menu-item {
+  @apply font-semibold text-indigo-800 bg-gray-100;
+}
+
+#menu-mobile li a{
+  @apply block px-4 py-3 text-base text-gray-700 hover:bg-gray-100;
+}
+
+
+#menu-mobile li.current-menu-item {
+  @apply font-bold text-indigo-800 bg-gray-100;
+}
+
+
+/* -----------------------------------------
+  02. Main Content
+----------------------------------------- */
+
+.content {
+  @apply  max-w-7xl mx-2 md:mx-auto md:px-2;
+}
+
+
+/* -----------------------------------------
+  06. Woocommerce
+----------------------------------------- */
+
+/* Product Content
+=================================== */
+
+/* ----- Animate Image zoom on card hpver ---- */
+/* https://play.tailwindcss.com/bJGtVPu4BT */
+
+.product {
+  @apply relative   overflow-hidden shadow-md ;
+}
+.item-content {
+  @apply relative overflow-hidden
+}
+.woocommerce ul.products li.product a img {
+  @apply  hover:scale-125 transition duration-500 cursor-pointer m-0;
+}
+/* ---- and animation ------- */
+
+.item-content {
+  @apply text-center min-w-0 p-2.5 bg-white
+}
+
+.woocommerce .products ul li,.woocommerce ul.products li {
+  @apply font-medium  hover:border-indigo-500 rounded border border-solid;
+}
+
+.woocommerce ul.products li.product .price {
+  @apply space-x-1 block text-base text-sky-500 mb-1.5 font-medium;
+}
+
+.woocommerce ul.products li.product .price ins {
+  @apply no-underline;
+}
+
+.woocommerce ul.products li.product .price del {
+  color: gray;
+  opacity: .6;
+}
+.woocommerce-loop-product__title  {
+  @apply text-black;
+  line-height: normal;
+  font-size: 16px;
+  letter-spacing: -.01em;
+  margin-bottom: 5px;
+  font-weight: 700
+}
+
+.woocommerce-loop-product__title:hover {
+  color: #259bea
+}
+.star-rating {
+  @apply   mx-auto;
+  overflow: hidden;
+  display: inline-block !important;
+  position: relative;
+  height: 1em;
+  line-height: 1em;
+  font-size: 12px;
+  width: 68px;
+  color: #ffc108;
+  margin: 0 0 0.5em;
+  float: none;
+}
+
+.woocommerce ul.products li.product .button  {
+  width: calc(100% - 40px);
+  padding: 13px 0;
+  transition: all .25s;
+  background-image: url(https://demo.ar-themes.com/wp-content/themes/hanout/assets/img/button-bg.svg);
+  color: #fff;
+  background-color: #259bea;
+  @apply hover:bg-red-400
+}
+
+.woocommerce span.onsale  {
+  z-index: 10;
+  position: absolute;
+  text-transform: uppercase;
+  font-size: 13px;
+  text-align: center;
+  background-color: #259bea;
+  padding: 3px 12px;
+  color: #fff;
+  top: 15px !important;
+  right: 15px !important;
+  line-height: 19px !important;
+  border-radius:  3px !important;
+  min-height: 0px !important;
+}
+
+/* Products Page
+=================================== */
+/* Title */
+.woocommerce-products-header {
+  margin-bottom: 30px;
+  position: relative;
+  text-align: center;
+}
+
+.page-title {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: #000;
+  position: relative;
+  text-align: center;
+  font-size: 26px;
+}
+
+.page-title:after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 6px;
+  position: absolute;
+  background: #259bea;
+  opacity: 0.6;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  z-index: -1;
+}
+
+/* Sort section */
+
+.shop-sort {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin: 0 0 25px;
+  padding: 10px;
+  background-color: #f6f9fc;
+  line-height: normal;
+  border-radius: 3px;
+  flex: auto;
+}
+.woocommerce-result-count {
+  text-align: left;
+  @apply invisible sm:visible max-h-0 sm:max-h-max;
+}
+.woocommerce .woocommerce-ordering ,.woocommerce .woocommerce-result-count{
+  margin-bottom: 0 !important;
+}
+/* Grid Section */
+.woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
+  /* chang grid column number when screen change. !!warny ->  in 5 column not work */
+  /*@apply !w-[99.9%]  sm:!w-[46.2%]  woo-md:!w-[22.15%]*/
+}
+
+
+/* -----------------------------------------
+  04. Footer
+----------------------------------------- */
+.footer {
+  @apply pt-10 bg-gray-100;
+}
+.wp-block-columns {
+  @apply max-w-7xl mx-2 md:mx-auto md:px-2;
+}
+.footer-widgets .widgettitle {
+  font-weight: 700;
+}
+
+.widgettitle {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.footer-info {
+  @apply p-2 bg-gray-200;
+}
+.footer-info-block{
+
+@apply  flex justify-between max-w-7xl mx-2 md:mx-auto md:px-2
+}
+.footer-widgets .widgettitle::after {
+  content: "";
+  display: block;
+  width: 25px;
+  height: 1px;
+  background-color: #259bea;
+  margin: 8px 0 0;
+}
+
+.custom_footer_html {
+  @apply max-w-xl ;
+}
+.custom_footer_title {
+  @apply text-2xl	 font-bold tracking-tight text-slate-900;
+}
+
+.custom_footer_p {
+  @apply mt-4 text-base leading-7 text-slate-700;
+}

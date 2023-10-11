@@ -4,9 +4,9 @@
 
 @include('sections.header')
 
-  <main id="main" class="main">
+  <div id="content" class="content">
     @yield('content')
-  </main>
+  </div>
 
   @hasSection('sidebar')
     <aside class="sidebar">

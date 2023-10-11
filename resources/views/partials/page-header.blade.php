@@ -1,3 +1,3 @@
-<div class="page-header bg-blue-300">
-  <h1>{!! $title !!}</h1>
+<div class="page-header">
+  <div class="text-center font-bold text-2xl mb-4">{!! $title !!}</div>
 </div>

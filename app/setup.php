@@ -151,12 +151,65 @@ add_action('widgets_init', function () {
     ] + $config);
 });
 
-add_theme_support('woocommerce');
-// Disable woocommerce stylesheets
+//------------------------------------------------------------------------------------------------//
+
+
+// By default your theme has now declared WooCommerce support. To add support for specific features, add them to your `app/setup.php`
 add_theme_support('wc-product-gallery-zoom');
 add_theme_support('wc-product-gallery-lightbox');
 add_theme_support('wc-product-gallery-slider');
+
+/**
+ * Add support for WooCommerce Subscription templates.
+ */
 add_filter('sage-woocommerce/templates', function ($paths) {
     $paths[] = WP_PLUGIN_DIR . '/woocommerce-subscriptions/templates/';
     return $paths;
 });
+
+
+// Disable all woocommerce stylesheets
+//add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
+
+// add all script at wp init
+add_action('wp_enqueue_scripts', function () {
+        wp_enqueue_script( 'alpine-sscript', 'https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js',array(),'',array('strategy' => 'defer'));
+    }
+    ,0
+);
+
+// create menus
+add_action('after_setup_theme',
+    function () {
+        register_nav_menus([
+                'dacan_profile_menu' => 'Docan Profile Menu',
+                'dacan_mobile_menu' => 'Docan Mobile Menu',
+                'dacan_sidebar_menu' => 'Docan Sidebar Menu'
+                // add some menues here
+            ]
+        );
+    }
+    ,0
+);
+
+
+/*
+ *
+add_action( 'after_setup_theme', function () {
+    add_theme_support( 'woocommerce', array(
+        'thumbnail_image_width' => 255,
+        'single_image_width'    => 255,
+
+        'product_grid'          => array(
+            'default_rows'    => 4,
+            'min_rows'        => 1,
+            'max_rows'        => 4,
+            'default_columns' => 4,
+            'min_columns'     => 1,
+            'max_columns'     => 4,
+        ),
+    ) );
+});
+ */
+
+//add_filter( 'woocommerce_enqueue_styles', '__return_false' );

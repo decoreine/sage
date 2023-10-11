@@ -1,63 +1,37 @@
-<div class="bg-yellow-200">hellow</div>
-<?php
-/**
- * The Template for displaying all single products
- *
- * This template can be overridden by copying it to yourtheme/woocommerce/single-product.php.
- *
- * HOWEVER, on occasion WooCommerce will need to update template files and you
- * (the theme developer) will need to copy the new files to your theme to
- * maintain compatibility. We try to do this as little as possible, but it does
- * happen. When this occurs the version of the template file will be bumped and
- * the readme will list any important changes.
- *
- * @see         https://docs.woocommerce.com/document/template-structure/
- * @package     WooCommerce\Templates
- * @version     1.6.4
- */
+{{--
+The Template for displaying all single products
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
-}
+This template can be overridden by copying it to yourtheme/woocommerce/single-product.php.
 
-get_header( 'shop' ); ?>
+HOWEVER, on occasion WooCommerce will need to update template files and you
+(the theme developer) will need to copy the new files to your theme to
+maintain compatibility. We try to do this as little as possible, but it does
+happen. When this occurs the version of the template file will be bumped and
+the readme will list any important changes.
 
-	<?php
-		/**
-		 * woocommerce_before_main_content hook.
-		 *
-		 * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
-		 * @hooked woocommerce_breadcrumb - 20
-		 */
-		do_action( 'woocommerce_before_main_content' );
-	?>
+@see         https://docs.woocommerce.com/document/template-structure/
+@package     WooCommerce\Templates
+@version     1.6.4
+--}}
 
-		<?php while ( have_posts() ) : ?>
-			<?php the_post(); ?>
+@extends('layouts.app')
 
-			<?php wc_get_template_part( 'content', 'single-product' ); ?>
+@section('content')
+  @php
+    do_action('get_header', 'shop');
+    do_action('woocommerce_before_main_content');
+  @endphp
 
-		<?php endwhile; // end of the loop. ?>
+  @while(have_posts())
+    @php
+      the_post();
+      wc_get_template_part('content', 'single-product');
+    @endphp
+  @endwhile
 
-	<?php
-		/**
-		 * woocommerce_after_main_content hook.
-		 *
-		 * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
-		 */
-		do_action( 'woocommerce_after_main_content' );
-	?>
-
-	<?php
-		/**
-		 * woocommerce_sidebar hook.
-		 *
-		 * @hooked woocommerce_get_sidebar - 10
-		 */
-		do_action( 'woocommerce_sidebar' );
-	?>
-
-<?php
-get_footer( 'shop' );
-
-/* Omit closing PHP tag at the end of PHP files to avoid "headers already sent" issues. */
+  @php
+    do_action('woocommerce_after_main_content');
+    do_action('get_sidebar', 'shop');
+    do_action('get_footer', 'shop');
+  @endphp
+@endsection
